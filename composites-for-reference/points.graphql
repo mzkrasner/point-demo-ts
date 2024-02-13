@@ -1,0 +1,24 @@
+interface Point
+  @createModel(description: "A point interface") {
+  controller: DID! @documentAccount
+  recipient: DID! @accountReference
+  issuanceDate: DateTime!
+}
+
+type SiteTriggerPoint implements Point
+  @createModel(accountRelation: LIST, description: "An implementation of a point related to a trigger that occurred on a website")
+  @createIndex(fields: [{ path: "issuanceDate" }]) 
+  @createIndex(fields: [{ path: "page" }]) 
+  {
+  controller: DID! @documentAccount
+  recipient: DID! @accountReference
+  issuanceDate: DateTime!
+  page: String! @string(maxLength: 100)
+  trigger: SiteTrigger
+}
+
+enum SiteTrigger {
+  PAGEVIEW
+  QUERY
+  CONVERSION
+}
