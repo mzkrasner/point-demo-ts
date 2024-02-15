@@ -39,7 +39,7 @@ const input = {
     trigger,
 }
 
-const newPoint = await point.createPoint(input);
+const newPoint = await client.createPoint(input);
 console.log(newPoint) // will log the Ceramic document you just created
 ```
 
