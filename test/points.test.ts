@@ -1,8 +1,6 @@
-/**
- * @jest-environment composedb
- */
 
-import { CeramicPointClient } from '../points';
+
+import { CeramicPointClient } from '../src';
 
 describe('ceramicPointClient', () => {
   test('create ceramic point client', async () => {

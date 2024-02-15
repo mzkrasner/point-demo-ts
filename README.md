@@ -29,11 +29,17 @@ This particular point type uses the idea of a `SiteTrigger` - there are three to
 You will use these types when placing triggers throughout your site to create points:
 
 ```javascript
-const userOneDid = 'did:pkh:eip155:1:0xc362c16a0dcbea78fb03a8f97f56deea905617bb';
+const recipient = 'did:pkh:eip155:1:0xc362c16a0dcbea78fb03a8f97f56deea905617bb';
 const page = 'https://developers.ceramic.network/';
 const trigger = 'PAGEVIEW';
 
-const newPoint = await point.createPoint(userOneDid, page, trigger);
+const input = {
+    recipient,
+    page,
+    trigger,
+}
+
+const newPoint = await point.createPoint(input);
 console.log(newPoint) // will log the Ceramic document you just created
 ```
 

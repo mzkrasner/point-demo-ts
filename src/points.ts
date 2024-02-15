@@ -18,6 +18,12 @@ type Point = {
   issuanceDate: string;
 };
 
+type PointInput = {
+  recipient: string;
+  page: string;
+  trigger: string;
+};
+
 const definition = {
   models: {
       Point: {
@@ -140,14 +146,11 @@ export class CeramicPointClient {
     return this.did;
   }
 
-  async createPoint(
-    recipient: string,
-    page: string,
-    trigger: string
-  ): Promise<unknown> {
+  async createPoint(input: PointInput): Promise<Point | unknown> {
     if (!this.did) {
       throw new Error("DID not set");
     }
+    const { recipient, page, trigger } = input;
     const composeClient = new ComposeClient({
       ceramic: this.endpoint,
       definition: definition as RuntimeCompositeDefinition,
@@ -186,9 +189,7 @@ export class CeramicPointClient {
     `);
     return data.data
       ? data.data.createSiteTriggerPoint.document
-      : "Error creating point";
+      : data;
   }
 }
-
-//define the CeramicPointClient as a type
 
