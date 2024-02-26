@@ -3,21 +3,6 @@
 import { CeramicPointClient} from "../src"
 import { PointClaimsClient } from "../src"
 
-type PointClaim = {
-  id: string;
-  issuer: {
-    id: string;
-  };
-  recipient: {
-    id: string;
-  };
-  data: {
-    value: number;
-    timestamp: string;
-    context: string;
-    refId: string;
-  }[];
-};
  
 describe('ceramicPointClient', () => {
   test('create ceramic point client', async () => {
