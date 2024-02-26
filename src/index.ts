@@ -11,3 +11,4 @@
  */
 
 export { CeramicPointClient } from './points.js'
+export { PointClaimsClient } from './pointClaims.js'
